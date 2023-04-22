@@ -1,4 +1,4 @@
-#import flask - from the package import class
+#from package import Class
 from flask import Flask 
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
@@ -12,10 +12,10 @@ def create_app():
   
     app=Flask(__name__)  # this is the name of the module/package that is calling this app
     app.debug=True
-    app.secret_key='utroutoru'
+    app.secret_key='somesecretgoeshere'
     #set the app configuration data 
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///sitedata.sqlite'
-    #initialize db with flask app
+    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///mydbname.sqlite'
+    #initialise db with flask app
     db.init_app(app)
 
     bootstrap = Bootstrap5(app)
@@ -35,7 +35,7 @@ def create_app():
     #    return User.query.get(int(user_id))
 
     #importing views module here to avoid circular references
-    # a commonly used practice.
+    # a common practice.
     from . import views
     app.register_blueprint(views.bp)
 
